@@ -1,4 +1,4 @@
-﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<RelatedContent, RelatedContentSettings>>
+﻿@*@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<RelatedNews, RelatedNewsSettings>>
 @{
     // Settings data
     var settings = Model.Settings;
@@ -6,10 +6,9 @@
 
     // Content data
     var relatedContent = Model.Content;
+}*@
 
-}
-
-@if (relatedContent != null)
+@*@if (relatedContent != null)
 {
     foreach (var item in relatedContent.Related)
     {
@@ -33,4 +32,4 @@
             </div>
         </div>
     }
-}
+}*@
