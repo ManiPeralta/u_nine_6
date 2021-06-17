@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using Umbraco.Cms.Core.Configuration;
+using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
 
@@ -46,7 +48,10 @@ namespace Umbraco9SK
                 .AddComposers()
                 .Build();
 #pragma warning restore IDE0022 // Use expression body for methods
-
+            services.Configure<ModelsBuilderSettings>(options =>
+            {
+                options.ModelsMode = ModelsMode.SourceCodeAuto;
+            });
         }
 
         /// <summary>
