@@ -14,11 +14,11 @@
     foreach (var item in relatedContent.Related)
     {
         var related = (NewsItem)item;
-        var title = related.Title;
-        var slogan = related.Slogan;
-        var image = related.Banner;
+        //var title = related.Title;
+        //var slogan = related.Slogan;
+        //var image = related.Banner;
         var link = related.Url();
-        <div class="p-4 mb-3 bg-light rounded ">
+        @*<div class="p-4 mb-3 bg-light rounded ">
             <div style="float:left" class="mr-3 mb-1">
                 <a href="@link">
                     @if (image != null)
@@ -31,6 +31,6 @@
                 <h4 class="fst-italic"><a href="@link">@title</a></h4>
                 <p class="mb-0">@slogan</p>
             </div>
-        </div>
+        </div>*@
     }
 }

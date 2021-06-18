@@ -52,6 +52,7 @@ namespace Umbraco9SK
             {
                 options.ModelsMode = ModelsMode.SourceCodeAuto;
             });
+
         }
 
         /// <summary>
