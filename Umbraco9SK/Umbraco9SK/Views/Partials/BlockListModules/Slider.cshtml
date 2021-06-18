@@ -14,6 +14,8 @@
     string subTitle = string.Empty;
     string buttonUrl = string.Empty;
     string buttonName = string.Empty;
+
+    string githubPath = "https://raw.githubusercontent.com/ManiPeralta/u_nine_6/main/Webready/";
 }
 <style>
     .overlay {
@@ -37,7 +39,7 @@
         @foreach (var item in slides)
         {
             Slide slide = (Slide)item.Content;
-            photo = slide.Photo != null && slide.Photo.Url().Any() ? slide.Photo.GetCropUrl("Banner") : "";
+            photo = slide.Photo != null && slide.Photo.Url().Any() ? slide.Photo.GetCropUrl("Banner") : $"{githubPath}salar{counter+1}.jpg";
             title = slide.Title;
             subTitle = slide.Subtitle;
             var button = slide.Link != null ? slide.Link : null;
