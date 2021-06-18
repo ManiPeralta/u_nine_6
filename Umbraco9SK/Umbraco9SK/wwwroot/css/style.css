@@ -19,7 +19,7 @@
 .mam4267b3 a,
 .mam4267b3 {
     background: #4267b3;
-    color: #e9ebee!important;
+    color: #e9ebee;
 }
 
 .mame9ebee a {
@@ -70,4 +70,12 @@
 
 .custom_overlay {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+#navbarNav .navbar-nav a {
+    color:#fff;
+}
+#navbarNav .navbar-nav a:hover,
+#navbarNav .navbar-nav a.active {
+    color: #000;
 }

@@ -1,1 +1,36 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    GeneralSettings generalSettings = (GeneralSettings)Umbraco.ContentAtRoot().DescendantsOrSelfOfType("generalSettings").FirstOrDefault();
+    var logo = generalSettings.Logo;
+    var style = generalSettings.MenuBackgroundColour;
+    var pageUrl = Model.Url();
+}
+
+<nav class="navbar navbar-expand-lg navbar-light @(style != null ? $"mam{style}" : "")">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            @if (logo != null)
+            {
+                <img src="@logo.Url()" height="80" alt="@logo.Name" class="ml-3" />
+            }
+            else
+            {
+                <img src="https://raw.githubusercontent.com/ManiPeralta/u_nine_6/main/Webready/logo.png" height="80" alt="Mano a mano logo" class="ml-3" />
+            }
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto text-primary">
+                @foreach (var item in generalSettings.MainMenu)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link @(item.Url == pageUrl ? "active" : "")" @(item.Url == pageUrl ? $"aria-current=page" : "")  href="@item.Url">@item.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

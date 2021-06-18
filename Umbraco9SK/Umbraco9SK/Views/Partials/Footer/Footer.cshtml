@@ -1,1 +1,42 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    GeneralSettings generalSettings = (GeneralSettings)Umbraco.ContentAtRoot().DescendantsOrSelfOfType("generalSettings").FirstOrDefault();
+    var style = generalSettings.FooterBackgroundColour;
+    var navigation = generalSettings.FooterMenu;
+    var socialMedia = generalSettings.SocialMedia;
+}
+
+<section class="@(style != null ? $"mam{style}" : "")">
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-md-7">
+                <ul class="nav">
+                    @if (navigation != null)
+                    {
+                        foreach (var nav in navigation)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="@nav.Url">@nav.Name</a>
+                            </li>
+                        }
+                    }
+                    @if (socialMedia != null)
+                    {
+                        foreach (var social in socialMedia)
+                        {
+                            <li class="nav-item">
+                                <a href="@social.SocialMediaUrl" class="nav-link" target="_blank">
+                                    <i class="bi bi-@social.SocialMediaName  "></i>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-md text-md-right">
+                <small>&copy; @(DateTime.Now.Year)  <a href="http://manoamano.co.uk">Mano a mano</a></small>
+            </div>
+        </div>
+    </div>
+</section>
